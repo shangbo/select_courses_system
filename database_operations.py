@@ -8,7 +8,8 @@ def login(id_=None,password=None):
         conn = MySQLdb.connect(host='127.0.0.1',user=id_,passwd=password,db='school',charset='utf8')
     except MySQLdb.OperationalError:
         conn = ''
-    return conn
+    finally:
+        return conn
 
 def get_login_info(conn,id_,status):
     cur = conn.cursor()
@@ -20,6 +21,25 @@ def get_login_info(conn,id_,status):
         username = cur.fetchall()
     except MySQLdb.OperationalError:
         username = ''
-    return username
+    finally:
+        cur.close()
+        return username
+
+def change_password(password, conn):
+    try:
+        cur = conn.cursor()
+        cur.execute("set password = password('%s')" % password)
+        return True
+    except MySQLdb.OperationalError:
+        return False
+    finally:
+        cur.close()
+
+def logout(conn):
+    conn.close()
+
+
+
+
 
 

@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 
 # Form implementation generated from reading ui file 'log_in.ui'
@@ -91,7 +92,7 @@ class Ui_login_dlg(object):
 
         self.retranslateUi(login_dlg)
         QtCore.QObject.connect(self.exit_button, QtCore.SIGNAL(_fromUtf8("clicked()")), login_dlg.close)
-        QtCore.QMetaObject.connectSlotsByName(login_dlg)
+        # QtCore.QMetaObject.connectSlotsByName(login_dlg)
 
     def retranslateUi(self, login_dlg):
         login_dlg.setWindowTitle(_translate("login_dlg", "Dialog", None))
