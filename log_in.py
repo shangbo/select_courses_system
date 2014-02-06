@@ -46,9 +46,9 @@ class login_dlg(QDialog, Ui_login_dlg):
         elif not self.conn:
             QMessageBox.information(self, u'登录失败', u'请检查你的学号(工号)和密码或者身份是否正确!\n', QMessageBox.Ok, QMessageBox.Ok)
         else:
-            username = get_login_info(self.conn, self.id_,stu_status)
-            self.username = username[0][0]
+            username = get_login_info( self.id_, stu_status, self.conn)
             if len(username) == 1:
+                self.username = username[0][0]
                 if tea_status:
                     self.status = '老师'
                     QMessageBox.information(self, u'登录成功', u'欢迎你!\n'+unicode(username[0][0])+u' 老师', QMessageBox.Ok, QMessageBox.Ok)

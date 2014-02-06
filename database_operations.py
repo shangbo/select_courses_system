@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 import MySQLdb
-#global
+import sys
+
 
 def login(id_=None,password=None):
+    conn = ''
     try:
         conn = MySQLdb.connect(host='127.0.0.1',user=id_,passwd=password,db='school',charset='utf8')
     except MySQLdb.OperationalError:
@@ -11,7 +13,8 @@ def login(id_=None,password=None):
     finally:
         return conn
 
-def get_login_info(conn,id_,status):
+def get_login_info(id_,status,conn):
+    username = ''
     cur = conn.cursor()
     try:
         if status:
@@ -26,8 +29,8 @@ def get_login_info(conn,id_,status):
         return username
 
 def change_password(password, conn):
+    cur = conn.cursor()
     try:
-        cur = conn.cursor()
         cur.execute("set password = password('%s')" % password)
         return True
     except MySQLdb.OperationalError:
@@ -36,7 +39,27 @@ def change_password(password, conn):
         cur.close()
 
 def logout(conn):
-    conn.close()
+    try:
+        conn.close()
+    except AttributeError:
+        pass
+
+def get_student_info(id_, conn):
+    cur = conn.cursor()
+    info = ''
+    try:
+        cur.execute("select stuName,stuId,stuGender,stuBirthday,stuNativePlace,"
+                    "stuPhoneNum,departName "
+                    "from Students,Departments "
+                    "where Students.stuId = '%s' and Students.departId = Departments.departId " % id_)
+        info = cur.fetchall()
+    except MySQLdb.OperationalError:
+        print sys.exc_value[1]
+        info = ''
+    finally:
+        cur.close()
+        return info
+
 
 
 

@@ -20,7 +20,7 @@ def get_tea_id(conn):
 def create_stu_add_priv(id_tup,conn):
     cur = conn.cursor()
     for i in id_tup:
-        cur.execute("grant usage,select on Students to '%s'@'%%' identified by '%s' " % (i[0], i[0]))
+        cur.execute("grant usage,select on school.* to '%s'@'%%' identified by '%s' " % (i[0], i[0]))
     cur.close()
 
 def create_tea_add_priv(id_tup,conn):

@@ -6,7 +6,7 @@ from PyQt4.QtCore import pyqtSlot
 from PyQt4 import QtCore
 from Ui_student_main_window import Ui_student_main
 from change_pass import change_pass_dlg
-
+from student_infomation import stu_info
 class student_main_window(QWidget, Ui_student_main):
     """
 
@@ -21,6 +21,7 @@ class student_main_window(QWidget, Ui_student_main):
         self.password = ''
         self.conn = ''
         self.pass_dialog = change_pass_dlg()
+        self.stu_info_dlg = stu_info()
         self.set_signal_slot()
     @pyqtSlot()
     def on_select_courses_button_clicked(self):
@@ -28,8 +29,8 @@ class student_main_window(QWidget, Ui_student_main):
 
     @pyqtSlot()
     def on_stu_info_button_clicked(self):
-        pass
-
+        self.stu_info_dlg.set_html(self.conn,self.id_)
+        self.stu_info_dlg.exec_()
     @pyqtSlot()
     def on_search_courses_button_clicked(self):
         pass
@@ -54,6 +55,7 @@ class student_main_window(QWidget, Ui_student_main):
 
     def set_signal_slot(self):
         QtCore.QObject.connect(self.change_pass_button, QtCore.SIGNAL("clicked()"), self.on_change_pass_button_clicked)
+        QtCore.QObject.connect(self.stu_info_button, QtCore.SIGNAL("clicked()"), self.on_stu_info_button_clicked)
 
 if __name__ == '__main__':
     import sys
