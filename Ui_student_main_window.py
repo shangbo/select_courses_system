@@ -1,9 +1,8 @@
-
 # -*- coding: utf-8 -*-
 
 # Form implementation generated from reading ui file 'student_main_window.ui'
 #
-# Created: Thu Feb  6 12:22:36 2014
+# Created: Tue Feb 11 19:55:18 2014
 #      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -51,9 +50,6 @@ class Ui_student_main(object):
         self.calendar = QtGui.QCalendarWidget(student_main)
         self.calendar.setGeometry(QtCore.QRect(340, 90, 451, 321))
         self.calendar.setObjectName(_fromUtf8("calendar"))
-        self.change_pass_button = QtGui.QPushButton(student_main)
-        self.change_pass_button.setGeometry(QtCore.QRect(670, 30, 98, 27))
-        self.change_pass_button.setObjectName(_fromUtf8("change_pass_button"))
         self.horizontalLayoutWidget = QtGui.QWidget(student_main)
         self.horizontalLayoutWidget.setGeometry(QtCore.QRect(20, 10, 161, 51))
         self.horizontalLayoutWidget.setObjectName(_fromUtf8("horizontalLayoutWidget"))
@@ -90,6 +86,18 @@ class Ui_student_main(object):
         self.id2_label.setAlignment(QtCore.Qt.AlignCenter)
         self.id2_label.setObjectName(_fromUtf8("id2_label"))
         self.id_layout.addWidget(self.id2_label)
+        self.widget = QtGui.QWidget(student_main)
+        self.widget.setGeometry(QtCore.QRect(610, 20, 178, 32))
+        self.widget.setObjectName(_fromUtf8("widget"))
+        self.horizontalLayout = QtGui.QHBoxLayout(self.widget)
+        self.horizontalLayout.setMargin(0)
+        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.change_pass_button = QtGui.QPushButton(self.widget)
+        self.change_pass_button.setObjectName(_fromUtf8("change_pass_button"))
+        self.horizontalLayout.addWidget(self.change_pass_button)
+        self.logout_button = QtGui.QPushButton(self.widget)
+        self.logout_button.setObjectName(_fromUtf8("logout_button"))
+        self.horizontalLayout.addWidget(self.logout_button)
 
         self.retranslateUi(student_main)
         # QtCore.QMetaObject.connectSlotsByName(student_main)
@@ -100,9 +108,10 @@ class Ui_student_main(object):
         self.stu_info_button.setText(_translate("student_main", "个人信息", None))
         self.search_courses_button.setText(_translate("student_main", "查询课程", None))
         self.view_grade_button.setText(_translate("student_main", "查看成绩", None))
-        self.change_pass_button.setText(_translate("student_main", "更改密码", None))
         self.name_label.setText(_translate("student_main", "姓名:", None))
         self.name2_label.setText(_translate("student_main", "default", None))
         self.id_label.setText(_translate("student_main", "学号:", None))
         self.id2_label.setText(_translate("student_main", "default", None))
+        self.change_pass_button.setText(_translate("student_main", "更改密码", None))
+        self.logout_button.setText(_translate("student_main", "注销", None))
 

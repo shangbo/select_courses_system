@@ -42,8 +42,8 @@ class stu_info(QDialog, Ui_stu_info):
         i = 0
         while position != -1:
             try:
-                position = HTML.find(u"""</span><span style=" font-size:14pt; font-weight:600;"></span></p>""")
                 global HTML
+                position = HTML.find(u"""</span><span style=" font-size:14pt; font-weight:600;"></span></p>""")
                 HTML = HTML[:position+55] + unicode(info[0][i]) + HTML[position+55:]
                 # QMessageBox.information(self, u"dsa", str(type(info)), QMessageBox.Ok, QMessageBox.Ok)
                 i += 1

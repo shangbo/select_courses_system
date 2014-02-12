@@ -17,6 +17,7 @@ class change_pass_dlg(QDialog, Ui_change_pass_dialog):
         self.conn = ''
         self.setupUi(self)
         self.set_signal_slot()
+
     @pyqtSlot()
     def on_change_pass_button_clicked(self):
         old_pass = self.old_pass_lineedit.text()
