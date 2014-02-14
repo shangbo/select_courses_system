@@ -159,7 +159,85 @@ def drop_courses_operation(id_, cour_id, tea_id, conn):
         return False
 
 
+def get_teacher_courses(id_, conn):
+    cur = conn.cursor()
+    try:
+        cur.execute("select courName,Courses.courId from OpenClasses,Courses "
+                    "where OpenClasses.courId=Courses.courId "
+                    "and OpenClasses.teaId = '%s';" % id_)
+        cour_name_tuple = cur.fetchall()
+    except MySQLdb.OperationalError, MySQLdb.ProgrammingError:
+        cour_name_tuple = ""
+    finally:
+        cur.close()
+        return cour_name_tuple
 
 
+def get_studied_the_courses_stu_info(tea_id, cour_id, conn):
+    cur = conn.cursor()
+    try:
+        cur.execute("select Students.stuId,Students.stuName,SelectCourses.totalGrade from SelectCourses,Students "
+                    "where SelectCourses.teaId = '%s' and SelectCourses.courId='%s' "
+                    "and SelectCourses.stuId=Students.stuId and not totalGrade is NULL" % (tea_id, cour_id))
+        stu_info = cur.fetchall()
+    except MySQLdb.OperationalError, MySQLdb.ProgrammingError:
+        stu_info = ''
+    finally:
+        cur.close()
+        return stu_info
 
+
+def get_studied_the_courses_stu_info_2(tea_id, cour_id, conn):
+    cur = conn.cursor()
+    try:
+        cur.execute("select Students.stuId,Students.stuName,SelectCourses.regularGrade,"
+                    "SelectCourses.examGrade,SelectCourses.totalGrade from SelectCourses,Students "
+                    "where SelectCourses.teaId = '%s' and SelectCourses.courId='%s' "
+                    "and SelectCourses.stuId=Students.stuId and not totalGrade is NULL" % (tea_id, cour_id))
+        stu_info = cur.fetchall()
+    except MySQLdb.OperationalError, MySQLdb.ProgrammingError:
+        stu_info = ''
+    finally:
+        cur.close()
+        return stu_info
+
+
+def get_no_grade_stu_info(tea_id, cour_id, conn):
+    cur = conn.cursor()
+    try:
+        cur.execute("select Students.stuId,Students.stuName,SelectCourses.totalGrade from SelectCourses,Students "
+                    "where SelectCourses.teaId = '%s' and SelectCourses.courId='%s' "
+                    "and SelectCourses.stuId=Students.stuId and totalGrade is NULL" % (tea_id, cour_id))
+        stu_info = cur.fetchall()
+    except MySQLdb.OperationalError,MySQLdb.ProgrammingError:
+        stu_info = ''
+    finally:
+        cur.close()
+        return stu_info
+
+
+def update_grade(regular_grade, exam_grade, cour_name, stu_name, total_grade, conn):
+    cur = conn.cursor()
+    cur.execute("select courId from Courses where courName = '%s'" % cour_name)
+    cour_id = cur.fetchall()[0][0]
+    cur.execute("select stuId from Students where stuName = '%s'" % stu_name)
+    stu_id = cur.fetchall()[0][0]
+    cur.execute("update SelectCourses set regularGrade = '%s' where courId='%s' "
+                "and stuId='%s';" % (regular_grade, cour_id, stu_id))
+    conn.commit()
+    cur.execute("update SelectCourses set examGrade = '%s' where courId='%s' "
+                "and stuId='%s';" % (exam_grade, cour_id, stu_id))
+    conn.commit()
+    cur.execute("update SelectCourses set totalGrade = '%s' where courId='%s' "
+                "and stuId='%s';" % (total_grade, cour_id, stu_id))
+    conn.commit()
+
+
+def get_the_courses_stu_name(tea_id, cour_id, conn):
+    cur = conn.cursor()
+    cur.execute("select Students.stuId,Students.stuName,SelectCourses.totalGrade from SelectCourses,Students "
+                    "where SelectCourses.teaId = '%s' and SelectCourses.courId='%s' "
+                    "and SelectCourses.stuId=Students.stuId" % (tea_id, cour_id))
+    stu_info = cur.fetchall()
+    return stu_info
 

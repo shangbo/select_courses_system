@@ -1,0 +1,150 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'update_grade.ui'
+#
+# Created: Fri Feb 14 15:48:54 2014
+#      by: PyQt4 UI code generator 4.10.3
+#
+# WARNING! All changes made in this file will be lost!
+
+from PyQt4 import QtCore, QtGui
+
+try:
+    _fromUtf8 = QtCore.QString.fromUtf8
+except AttributeError:
+    def _fromUtf8(s):
+        return s
+
+try:
+    _encoding = QtGui.QApplication.UnicodeUTF8
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig, _encoding)
+except AttributeError:
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig)
+
+class Ui_update_dialog(object):
+    def setupUi(self, update_dialog):
+        update_dialog.setObjectName(_fromUtf8("update_dialog"))
+        update_dialog.resize(628, 406)
+        self.layoutWidget = QtGui.QWidget(update_dialog)
+        self.layoutWidget.setGeometry(QtCore.QRect(20, 50, 191, 151))
+        self.layoutWidget.setObjectName(_fromUtf8("layoutWidget"))
+        self.no_grade_stu_layout = QtGui.QVBoxLayout(self.layoutWidget)
+        self.no_grade_stu_layout.setMargin(0)
+        self.no_grade_stu_layout.setObjectName(_fromUtf8("no_grade_stu_layout"))
+        self.no_grade_label = QtGui.QLabel(self.layoutWidget)
+        self.no_grade_label.setObjectName(_fromUtf8("no_grade_label"))
+        self.no_grade_stu_layout.addWidget(self.no_grade_label)
+        self.no_grade_tableWidget = QtGui.QTableWidget(self.layoutWidget)
+        self.no_grade_tableWidget.setObjectName(_fromUtf8("no_grade_tableWidget"))
+        self.no_grade_tableWidget.setColumnCount(2)
+        self.no_grade_tableWidget.setRowCount(0)
+        item = QtGui.QTableWidgetItem()
+        self.no_grade_tableWidget.setHorizontalHeaderItem(0, item)
+        item = QtGui.QTableWidgetItem()
+        self.no_grade_tableWidget.setHorizontalHeaderItem(1, item)
+        self.no_grade_stu_layout.addWidget(self.no_grade_tableWidget)
+        self.update_grade_button = QtGui.QPushButton(update_dialog)
+        self.update_grade_button.setGeometry(QtCore.QRect(460, 150, 121, 31))
+        self.update_grade_button.setObjectName(_fromUtf8("update_grade_button"))
+        self.layoutWidget1 = QtGui.QWidget(update_dialog)
+        self.layoutWidget1.setGeometry(QtCore.QRect(60, 230, 501, 141))
+        self.layoutWidget1.setObjectName(_fromUtf8("layoutWidget1"))
+        self.has_grade_stu_layout = QtGui.QVBoxLayout(self.layoutWidget1)
+        self.has_grade_stu_layout.setMargin(0)
+        self.has_grade_stu_layout.setObjectName(_fromUtf8("has_grade_stu_layout"))
+        self.has_grade_label = QtGui.QLabel(self.layoutWidget1)
+        self.has_grade_label.setObjectName(_fromUtf8("has_grade_label"))
+        self.has_grade_stu_layout.addWidget(self.has_grade_label)
+        self.has_grade_tableWidget = QtGui.QTableWidget(self.layoutWidget1)
+        self.has_grade_tableWidget.setObjectName(_fromUtf8("has_grade_tableWidget"))
+        self.has_grade_tableWidget.setColumnCount(5)
+        self.has_grade_tableWidget.setRowCount(0)
+        item = QtGui.QTableWidgetItem()
+        self.has_grade_tableWidget.setHorizontalHeaderItem(0, item)
+        item = QtGui.QTableWidgetItem()
+        self.has_grade_tableWidget.setHorizontalHeaderItem(1, item)
+        item = QtGui.QTableWidgetItem()
+        self.has_grade_tableWidget.setHorizontalHeaderItem(2, item)
+        item = QtGui.QTableWidgetItem()
+        self.has_grade_tableWidget.setHorizontalHeaderItem(3, item)
+        item = QtGui.QTableWidgetItem()
+        self.has_grade_tableWidget.setHorizontalHeaderItem(4, item)
+        self.has_grade_stu_layout.addWidget(self.has_grade_tableWidget)
+        self.layoutWidget2 = QtGui.QWidget(update_dialog)
+        self.layoutWidget2.setGeometry(QtCore.QRect(230, 50, 181, 61))
+        self.layoutWidget2.setObjectName(_fromUtf8("layoutWidget2"))
+        self.combo_layout = QtGui.QVBoxLayout(self.layoutWidget2)
+        self.combo_layout.setMargin(0)
+        self.combo_layout.setObjectName(_fromUtf8("combo_layout"))
+        self.combo_label = QtGui.QLabel(self.layoutWidget2)
+        self.combo_label.setObjectName(_fromUtf8("combo_label"))
+        self.combo_layout.addWidget(self.combo_label)
+        self.choose_courses_combo = QtGui.QComboBox(self.layoutWidget2)
+        self.choose_courses_combo.setObjectName(_fromUtf8("choose_courses_combo"))
+        self.combo_layout.addWidget(self.choose_courses_combo)
+        self.layoutWidget3 = QtGui.QWidget(update_dialog)
+        self.layoutWidget3.setGeometry(QtCore.QRect(430, 50, 181, 61))
+        self.layoutWidget3.setObjectName(_fromUtf8("layoutWidget3"))
+        self.verticalLayout = QtGui.QVBoxLayout(self.layoutWidget3)
+        self.verticalLayout.setMargin(0)
+        self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+        self.label = QtGui.QLabel(self.layoutWidget3)
+        self.label.setObjectName(_fromUtf8("label"))
+        self.verticalLayout.addWidget(self.label)
+        self.stu_name_combo = QtGui.QComboBox(self.layoutWidget3)
+        self.stu_name_combo.setObjectName(_fromUtf8("stu_name_combo"))
+        self.verticalLayout.addWidget(self.stu_name_combo)
+        self.layoutWidget4 = QtGui.QWidget(update_dialog)
+        self.layoutWidget4.setGeometry(QtCore.QRect(230, 130, 203, 29))
+        self.layoutWidget4.setObjectName(_fromUtf8("layoutWidget4"))
+        self.horizontalLayout = QtGui.QHBoxLayout(self.layoutWidget4)
+        self.horizontalLayout.setMargin(0)
+        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.label_2 = QtGui.QLabel(self.layoutWidget4)
+        self.label_2.setObjectName(_fromUtf8("label_2"))
+        self.horizontalLayout.addWidget(self.label_2)
+        self.regular_grade_lineedit = QtGui.QLineEdit(self.layoutWidget4)
+        self.regular_grade_lineedit.setObjectName(_fromUtf8("regular_grade_lineedit"))
+        self.horizontalLayout.addWidget(self.regular_grade_lineedit)
+        self.layoutWidget5 = QtGui.QWidget(update_dialog)
+        self.layoutWidget5.setGeometry(QtCore.QRect(230, 170, 203, 29))
+        self.layoutWidget5.setObjectName(_fromUtf8("layoutWidget5"))
+        self.horizontalLayout_2 = QtGui.QHBoxLayout(self.layoutWidget5)
+        self.horizontalLayout_2.setMargin(0)
+        self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
+        self.label_3 = QtGui.QLabel(self.layoutWidget5)
+        self.label_3.setObjectName(_fromUtf8("label_3"))
+        self.horizontalLayout_2.addWidget(self.label_3)
+        self.exam_grade_lineedit = QtGui.QLineEdit(self.layoutWidget5)
+        self.exam_grade_lineedit.setObjectName(_fromUtf8("exam_grade_lineedit"))
+        self.horizontalLayout_2.addWidget(self.exam_grade_lineedit)
+
+        self.retranslateUi(update_dialog)
+        # QtCore.QMetaObject.connectSlotsByName(update_dialog)
+
+    def retranslateUi(self, update_dialog):
+        update_dialog.setWindowTitle(_translate("update_dialog", "修改/输入成绩", None))
+        self.no_grade_label.setText(_translate("update_dialog", "未输入成绩的学生", None))
+        item = self.no_grade_tableWidget.horizontalHeaderItem(0)
+        item.setText(_translate("update_dialog", "学号", None))
+        item = self.no_grade_tableWidget.horizontalHeaderItem(1)
+        item.setText(_translate("update_dialog", "姓名", None))
+        self.update_grade_button.setText(_translate("update_dialog", "修改/输入成绩", None))
+        self.has_grade_label.setText(_translate("update_dialog", "已输入成绩的学生", None))
+        item = self.has_grade_tableWidget.horizontalHeaderItem(0)
+        item.setText(_translate("update_dialog", "学号", None))
+        item = self.has_grade_tableWidget.horizontalHeaderItem(1)
+        item.setText(_translate("update_dialog", "姓名", None))
+        item = self.has_grade_tableWidget.horizontalHeaderItem(2)
+        item.setText(_translate("update_dialog", "平时成绩", None))
+        item = self.has_grade_tableWidget.horizontalHeaderItem(3)
+        item.setText(_translate("update_dialog", "考试成绩", None))
+        item = self.has_grade_tableWidget.horizontalHeaderItem(4)
+        item.setText(_translate("update_dialog", "总成绩", None))
+        self.combo_label.setText(_translate("update_dialog", "课程名", None))
+        self.label.setText(_translate("update_dialog", "学生姓名", None))
+        self.label_2.setText(_translate("update_dialog", "平时成绩", None))
+        self.label_3.setText(_translate("update_dialog", "考试成绩", None))
+

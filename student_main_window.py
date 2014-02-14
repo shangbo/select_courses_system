@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-from PyQt4.QtGui import QWidget,QApplication, QMessageBox
+from PyQt4.QtGui import QWidget, QApplication, QMessageBox
 from PyQt4.QtCore import pyqtSlot
 from PyQt4 import QtCore
 from Ui_student_main_window import Ui_student_main
@@ -39,7 +39,7 @@ class student_main_window(QWidget, Ui_student_main):
 
     @pyqtSlot()
     def on_stu_info_button_clicked(self):
-        self.stu_info_dlg.set_html(self.conn,self.id_)
+        self.stu_info_dlg.set_html(self.conn, self.id_)
         self.stu_info_dlg.exec_()
     @pyqtSlot()
     def on_search_courses_button_clicked(self):

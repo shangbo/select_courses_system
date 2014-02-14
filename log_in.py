@@ -10,6 +10,8 @@ from PyQt4 import QtCore
 from Ui_log_in import Ui_login_dlg
 from student_main_window import student_main_window
 from database_operations import login, get_login_info
+from teacher_main_window import TeacherMainWindow
+
 
 class login_dlg(QDialog, Ui_login_dlg):
     """
@@ -50,15 +52,18 @@ class login_dlg(QDialog, Ui_login_dlg):
             if len(username) == 1:
                 self.username = username[0][0]
                 if tea_status:
-                    self.status = '老师'
+                    self.status = u'老师'
                     QMessageBox.information(self, u'登录成功', u'欢迎你!\n'+unicode(username[0][0])+u' 老师', QMessageBox.Ok, QMessageBox.Ok)
                     self.accept()
                 else:
-                    self.status = '学生'
+                    self.status = u'学生'
                     QMessageBox.information(self, u'登录成功', u'欢迎你!\n'+unicode(username[0][0])+u' 同学', QMessageBox.Ok, QMessageBox.Ok)
                     self.accept()
             elif len(username) == 0:
                 QMessageBox.information(self, u'登录失败', u'请检查你的学号(工号)和密码或者身份是否正确!\n', QMessageBox.Ok, QMessageBox.Ok)
+
+    def get_status(self):
+        return self.status
 
     def connect_signal_slot(self):
         QtCore.QObject.connect(self.login_button, QtCore.SIGNAL("clicked()"), self.on_login_button_clicked)
@@ -69,7 +74,15 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     x = login_dlg()
     stu_window = student_main_window()
+    tea_window = TeacherMainWindow()
     if x.exec_():
-        stu_window.set_info(x.username, x.id_, x.status, x.password, x.conn)
-        stu_window.show()
-        sys.exit(app.exec_())
+        if x.get_status() == u"学生":
+            stu_window.set_info(x.username, x.id_, x.status, x.password, x.conn)
+            stu_window.show()
+            sys.exit(app.exec_())
+        elif x.get_status() == u"老师":
+            tea_window.set_info(x.username, x.id_, x.status, x.password, x.conn)
+            tea_window.show()
+            sys.exit(app.exec_())
+        else:
+            pass
