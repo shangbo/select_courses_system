@@ -40,6 +40,13 @@ class UpdateGrade(QDialog, Ui_update_dialog):
             self.stu_name_combo.addItem(item[1])
 
     def set_table_widget_view(self, cour):
+            cour_id = self.set_stu_combo_view(cour)
+            stu_tuple = get_the_courses_stu_name(self.id_, cour_id, self.conn)
+            self.stu_name_combo.clear()
+            for item in stu_tuple:
+                self.stu_name_combo.addItem(item[1])
+
+    def set_stu_combo_view(self, cour):
         if len(self.cour_id) != 0:
             cour_id = self.cour_id[cour]
             self.studied_stu_info = get_studied_the_courses_stu_info_2(self.id_, cour_id, self.conn)
@@ -55,11 +62,7 @@ class UpdateGrade(QDialog, Ui_update_dialog):
                 for j, item in enumerate(item_tuple):
                     new_item = QTableWidgetItem(unicode(item))
                     self.no_grade_tableWidget.setItem(i, j, new_item)
-
-            stu_tuple = get_the_courses_stu_name(self.id_, cour_id, self.conn)
-            self.stu_name_combo.clear()
-            for item in stu_tuple:
-                self.stu_name_combo.addItem(item[1])
+            return cour_id
 
     def get_info(self, id_, conn):
         self.id_ = id_
@@ -76,11 +79,12 @@ class UpdateGrade(QDialog, Ui_update_dialog):
             if exam_grade:
                 update_grade(regular_grade, exam_grade, cour_name, stu_name, total_grade, self.conn)
                 index = self.choose_courses_combo.currentIndex()
-                self.set_table_widget_view(index)
+                self.set_stu_combo_view(index)
             else:
                 QMessageBox.information(self, u"错误", u"请输入考试成绩",QMessageBox.Ok)
         else:
             QMessageBox.information(self, u"错误", u"请输入平时成绩",QMessageBox.Ok)
+
 
     def conn_signal_slot(self):
             QtCore.QObject.connect(self.update_grade_button, QtCore.SIGNAL("clicked()"),
